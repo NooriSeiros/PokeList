@@ -1,6 +1,7 @@
 package com.noori.pokelist.dto;
 
 import com.noori.pokelist.entities.Mons;
+import com.noori.pokelist.projections.MonsMinProjection;
 
 public class MonsMinDTO {
 
@@ -20,6 +21,14 @@ public class MonsMinDTO {
 		this.year = entity.getYear();
 		this.imgUrl = entity.getGenre();
 		this.shortDescription = entity.getShortDescription();
+	}
+	
+	public MonsMinDTO(MonsMinProjection projection) {
+		
+		this.id = projection.getId();
+		this.title = projection.getTitle();
+		this.year = projection.getYear();
+		this.shortDescription = projection.getShortDescription();
 	}
 
 	public Long getId() {

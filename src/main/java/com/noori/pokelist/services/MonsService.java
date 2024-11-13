@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import com.noori.pokelist.dto.MonsDTO;
 import com.noori.pokelist.dto.MonsMinDTO;
 import com.noori.pokelist.entities.Mons;
+import com.noori.pokelist.projections.MonsMinProjection;
 import com.noori.pokelist.repositories.MonsRepository;
 
 @Service
@@ -31,5 +32,10 @@ public class MonsService {
 		return dto;
 	}
 	
-	
+	@Transactional(readOnly = true)
+	public List<MonsMinDTO> findByList(long listId) {
+		List<MonsMinProjection> result = monsRepository.searchByList(listId);
+		List<MonsMinDTO> dto = result.stream().map(x -> new MonsMinDTO(x)).toList();
+		return dto;
+	}
 }
