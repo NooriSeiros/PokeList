@@ -27,7 +27,7 @@ public class MonsMinDTO {
 		
 		this.id = projection.getId();
 		this.title = projection.getTitle();
-		this.year = projection.getYear();
+		this.year = projection.getGameYear();
 		this.shortDescription = projection.getShortDescription();
 	}
 
